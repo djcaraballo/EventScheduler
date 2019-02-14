@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_USER": "djcaraballo",
+    "MONGO_PASSWORD": "3Sn3yTs3H6HzhsDu",
+    "MONGO_DB": "events-scheduler"
+  }
+}
