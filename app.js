@@ -26,7 +26,7 @@ mongoose
     }@cluster0-bhw1e.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
   )
   .then(() => {
-    app.listen(4000);
+    app.listen(8000);
   })
   .catch(err => {
     console.log(err);
