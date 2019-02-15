@@ -1,4 +1,5 @@
 const Event = require('../../models/event');
+const User = require('../../models/user')
 const { formatEvent } = require('./combine');
 
 module.exports = {
@@ -12,7 +13,10 @@ module.exports = {
       throw err;
     }
   },
-  createEvent: async args => {
+  createEvent: async (args, req) => {
+    if(!req.isAuth) {
+      throw new Error('Unauthenticated user!')
+    }
     const event = new Event({
       title: args.eventInput.title,
       description: args.eventInput.description,
@@ -20,13 +24,13 @@ module.exports = {
       contact: args.eventInput.contact,
       location: args.eventInput.location,
       price_quote: +args.eventInput.price_quote,
-      creator: '5c6593c8d3a597c94974973e'
+      creator: req.userId
     });
     let createdEvent;
     try {
       const result = await event.save()
       createdEvent = formatEvent(result);
-      const creator = await  User.findById('5c6593c8d3a597c94974973e');
+      const creator = await  User.findById(req.userId);
 
       if (!creator) {
         throw new Error('User not found.')
