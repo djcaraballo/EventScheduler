@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './Auth.css';
 
+import { fetchData } from '../../API/api'
+
 class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      isLogin: true,
     }
   }
 
@@ -15,14 +18,49 @@ class Auth extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
+    e.preventDefault()
     const { email, password } = this.state;
+    let requestBody;
 
     if(email.trim().length === 0 || password.trim().length === 0) {
       return;
     }
 
-    console.log(email, password)
+    if (!this.state.isLogin) {
+      requestBody = {
+        query: `
+        mutation {
+          createUser(userInput: {email: "${email}", password: "${password}"}) {
+            _id
+            email
+          }
+        }
+        `
+      };
+    } else {
+      requestBody = {
+        query: `
+          query {
+            login(email: "${email}", password: "${password}") {
+              userId
+              token
+              tokenExpiration
+            }
+          }
+        `
+      }
+    }
+
+
+    const userData = await fetchData(requestBody);
+    console.log(userData)
+  }
+
+  handleModeSwitch = () => {
+    this.setState(prevState => {
+      return {isLogin: !prevState.isLogin}
+    })
   }
 
   render() {
@@ -45,8 +83,15 @@ class Auth extends Component {
             onChange={this.handleChange} />
         </div>
         <div className="form-buttons">
-          <button type="submit">Login</button>
-          <button type="button">Switch to Signup</button>
+          <button
+            type="submit">
+            {this.state.isLogin ? 'Login' : 'Create Account'}
+          </button>
+          <button
+            type="button"
+            onClick={this.handleModeSwitch}>
+            Switch to {this.state.isLogin ? 'Signup' : 'Login'}
+          </button>
         </div>
       </form>
     )
