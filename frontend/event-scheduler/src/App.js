@@ -4,6 +4,7 @@ import './App.css';
 
 import Auth from './Components/Auth/Auth';
 import Events from './Components/Events/Events';
+import Bookings from './Components/Bookings/Bookings';
 
 class App extends Component {
   render() {
@@ -13,7 +14,7 @@ class App extends Component {
           <Redirect from="/" to="/auth" exact />
           <Route path="/auth" component={Auth} />
           <Route path="/events" component={Events} />
-          <Route path="/bookings" component={null} />
+          <Route path="/bookings" component={Bookings} />
         </Switch>
       </BrowserRouter>
     );
