@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import './Auth.css';
 
-import { fetchData } from '../../API/api'
+import './Auth.css';
+import { fetchData } from '../../API/api';
+import AuthContext from '../../context/authContext';
 
 class Auth extends Component {
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -50,10 +53,18 @@ class Auth extends Component {
           }
         `
       }
+
     }
 
-
     const userData = await fetchData(requestBody);
+
+    if (userData.data.login.token) {
+      this.context.login(
+        userData.data.login.token,
+        userData.data.login.userId,
+        userData.data.login.tokenExpiration
+      )
+    }
     console.log(userData)
   }
 
