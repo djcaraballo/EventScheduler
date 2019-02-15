@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import './App.css';
 
 import Auth from './Components/Auth/Auth';
+import Events from './Components/Events/Events';
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
         <Switch>
           <Redirect from="/" to="/auth" exact />
           <Route path="/auth" component={Auth} />
-          <Route path="/events" component={null} />
+          <Route path="/events" component={Events} />
           <Route path="/bookings" component={null} />
         </Switch>
       </BrowserRouter>
