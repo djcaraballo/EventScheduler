@@ -29,25 +29,36 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .main-nav li {
   margin: 0 1rem;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav button {
   text-decoration: none;
   color: #fff;
   padding: 0.25rem 0.5rem;
+  border: none;
+  font: inherit;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0;
 }
 
-.main-nav a:hover {
+.main-nav a:hover,
+.main-nav button:hover {
   background: #ff9cdc;
   color: #3d3f88;
   border-radius: 5px;
 }
 .main-nav a:active,
-.main-nav a.active {
+.main-nav a.active,
+.main-nav button:active,
+.main-nav button.active {
   background: #fff;
   color: #040cf9;
   border-radius: 5px;

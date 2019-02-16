@@ -1,0 +1,66 @@
+.events-form {
+  width: 40rem;
+  max-width: 80%;
+  margin: 5rem auto;
+}
+
+.events-form-controls label,
+.events-form-controls input,
+.events-form-controls textarea {
+  width: 100%;
+  display: block;
+}
+
+.events-form-controls {
+  margin-bottom: 1rem;
+}
+
+.events-form-controls label {
+  margin-bottom: 0.5rem;
+}
+
+.events-controls {
+  text-align: center;
+  border: 1px solid #923a6b;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 30rem;
+  max-width: 80%;
+}
+
+.events-form-controls button,
+.events-controls button {
+  background: #923a6b;
+  font: inherit;
+  border: 1px solid #923a6b;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+}
+
+.events-form-controls button:hover,
+.events-form-controls button:active,
+.events-controls button:hover,
+.event-controls button:active {
+  background: #ff9cdc;
+  border-color: #ff9cdc;
+  color: #3d3f88;
+}
+
+.events-list {
+  margin-top: 2rem;
+  width: 40rem;
+  max-width: 90%;
+  margin: 2rem auto;
+  list-style: none;
+  padding: 0;
+}
+
+.event-item {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #923a6b;
+}

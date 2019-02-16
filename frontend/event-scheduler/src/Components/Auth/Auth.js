@@ -56,7 +56,7 @@ class Auth extends Component {
 
     }
 
-    const userData = await fetchData(requestBody);
+    const userData = await fetchData(requestBody, null);
 
     if (userData.data.login.token) {
       this.context.login(
