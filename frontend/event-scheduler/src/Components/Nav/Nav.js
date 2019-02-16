@@ -17,7 +17,12 @@ const Nav = props => (
               {!context.token &&
               (<li><NavLink to="/auth">Authenticate</NavLink></li>)}
               <li><NavLink to="/events">Events</NavLink></li>
-              {context.token && <li><NavLink to="/bookings">Bookings</NavLink></li>}
+              {context.token && (
+                <React.Fragment>
+                  <li><NavLink to="/bookings">Bookings</NavLink></li>
+                  <li><button>Logout</button></li>
+                </React.Fragment>
+              )}
             </ul>
           </nav>
         </header>

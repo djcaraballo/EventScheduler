@@ -32,9 +32,11 @@
   margin: 0 1rem;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav button {
   text-decoration: none;
   color: #000;
+  padding: 0.25rem 0.5rem;
 }
 
 .main-nav a:hover,
