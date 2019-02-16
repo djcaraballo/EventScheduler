@@ -13,6 +13,7 @@ class Events extends Component {
     super(props)
     this.state = {
       createEvent: false,
+      events: [],
     }
     this.titleElRef = React.createRef();
     this.dateElRef = React.createRef();
@@ -21,6 +22,10 @@ class Events extends Component {
     this.priceElRef = React.createRef();
     this.descriptionElRef = React.createRef();
   }
+
+  componentDidMount() {
+    this.getEvents();
+  };
 
   handleCreateEvent = () => {
     this.setState({
@@ -32,7 +37,7 @@ class Events extends Component {
     this.setState({
       createEvent: false
     });
-  }
+  };
 
   handleConfirmClick = async () => {
     this.setState({
@@ -96,9 +101,42 @@ class Events extends Component {
     const token = this.context.token;
     const confirmedEvent = await fetchData(requestBody, token);
     console.log(confirmedEvent)
+    this.getEvents()
+  }
+
+  getEvents = async () => {
+    const requestBody = {
+      query: `
+        query {
+          events {
+            _id
+            title
+            date
+            contact
+            location
+            price_quote
+            description
+            creator {
+              _id
+              email
+            }
+          }
+        }
+      `
+    }
+
+    const events = await fetchData(requestBody, null);
+    console.log(events.data.events)
+    this.setState({
+      events: events.data.events
+    })
   }
 
   render() {
+    const eventList = this.state.events.map(event => {
+      return <li key={event._id} className="event-item">{event.title}</li>
+    })
+
     return(
       <React.Fragment>
         {this.state.createEvent && <ModalBackdrop />}
@@ -147,6 +185,9 @@ class Events extends Component {
             </button>
           </div>
         )}
+        <ul className="events-list">
+          {eventList}
+        </ul>
       </React.Fragment>
     )
   }
