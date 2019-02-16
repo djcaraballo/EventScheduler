@@ -19,9 +19,9 @@
 }
 
 .form-buttons button {
-  background: #01d1d1;
+  background: #923a6b;
   font: inherit;
-  border: 1px solid #01d1d1;
+  border: 1px solid #923a6b;
   border-radius: 3px;
   padding: 0.25rem 1rem;
   margin-right: 1rem;
@@ -32,6 +32,7 @@
 
 .form-buttons button:hover,
 .form-buttons button:active {
-  background: #01a7a7;
-  border-color: #01a7a7;
+  background: #ff9cdc;
+  border-color: #ff9cdc;
+  color: #3d3f88;
 }
