@@ -1,4 +1,25 @@
-.events-control {
+.events-form {
+  width: 40rem;
+  max-width: 80%;
+  margin: 5rem auto;
+}
+
+.events-form-controls label,
+.events-form-controls input,
+.events-form-controls textarea {
+  width: 100%;
+  display: block;
+}
+
+.events-form-controls {
+  margin-bottom: 1rem;
+}
+
+.events-form-controls label {
+  margin-bottom: 0.5rem;
+}
+
+.events-controls {
   text-align: center;
   border: 1px solid #923a6b;
   padding: 1rem;
@@ -7,7 +28,8 @@
   max-width: 80%;
 }
 
-.events-control button {
+.events-form-controls button,
+.events-controls button {
   background: #923a6b;
   font: inherit;
   border: 1px solid #923a6b;
@@ -19,8 +41,10 @@
   cursor: pointer;
 }
 
-.events-control button:hover,
-.event-control button:active {
+.events-form-controls button:hover,
+.events-form-controls button:active,
+.events-controls button:hover,
+.event-controls button:active {
   background: #ff9cdc;
   border-color: #ff9cdc;
   color: #3d3f88;
