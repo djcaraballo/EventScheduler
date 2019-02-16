@@ -8,20 +8,49 @@ class Events extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      createEvent: false,
     }
+  }
+
+  handleCreateEvent = () => {
+    this.setState({
+      createEvent: true
+    });
+  };
+
+  handleCancelClick = () => {
+    this.setState({
+      createEvent: false
+    });
+  }
+
+  handleConfirmClick = () => {
+    this.setState({
+      createEvent: false
+    });
   }
 
   render() {
     return(
       <React.Fragment>
-        <ModalBackdrop />
-        <Modal title="Add Event" userCancel userConfirm>
+        {this.state.createEvent && <ModalBackdrop />}
+        {this.state.createEvent && (
+          <Modal
+            title="Add Event"
+            userCancel
+            userConfirm
+            onCancel={this.handleCancelClick}
+            onConfirm={this.handleConfirmClick}>
           <p>Modal Content</p>
-        </Modal>
+          </Modal>
+        )}
         <div className="events-control">
           <p>Share your own events!</p>
-          <button className="event-btn">Create Event</button>
+          <button
+            className="event-btn"
+            onClick={this.handleCreateEvent}>
+            Create Event
+          </button>
         </div>
       </React.Fragment>
     )
