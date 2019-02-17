@@ -25,6 +25,7 @@ class Events extends Component {
     this.locationElRef = React.createRef();
     this.priceElRef = React.createRef();
     this.descriptionElRef = React.createRef();
+    this.isActive = true;
   }
 
   componentDidMount() {
@@ -129,9 +130,12 @@ class Events extends Component {
     }
 
     const events = await fetchData(requestBody, null);
-    this.setState({
-      events: events.data.events
-    })
+    if (this.isActive) {
+      this.setState({
+        events: events.data.events,
+        isLoading: false,
+      })
+    }
     this.setState({isLoading: false});
   };
 
@@ -142,9 +146,31 @@ class Events extends Component {
     })
   };
 
-  handleBookEvent = () => {
-
+  handleBookEvent = async () => {
+    if(!this.context.token) {
+      this.setState({selectedEvent: null})
+      return;
+    }
+    const requestBody = {
+      query: `
+        mutation {
+          bookEvent(eventId: "${this.state.selectedEvent._id}") {
+            _id
+            createdAt
+            updatedAt
+          }
+        }
+      `
+    }
+    const token = this.context.token;
+    const confirmation = await fetchData(requestBody, token);
+    console.log(confirmation)
+    this.setState({selectedEvent: null})
   };
+
+  componentWillUnmount() {
+    this.isActive = false;
+  }
 
   render() {
     return(
@@ -193,7 +219,7 @@ class Events extends Component {
             userConfirm
             onCancel={this.handleCancelClick}
             onConfirm={this.handleBookEvent}
-            confirmText="Book Event">
+            confirmText={this.context.token ? "Book Event" : "Confirm"}>
             <h1>{this.state.selectedEvent.title}</h1>
             <h2>${this.state.selectedEvent.price_quote} -- {new Date(this.state.date).toLocaleDateString()}</h2>
             <p>{this.state.selectedEvent.description}</p>
