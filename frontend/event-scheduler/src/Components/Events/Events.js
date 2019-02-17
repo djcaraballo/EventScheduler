@@ -6,6 +6,7 @@ import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import { fetchData } from '../../API/api';
 import AuthContext from '../../context/authContext';
 import EventList from '../EventList/EventList';
+import LoadingGif from '../Loading/Loading';
 
 class Events extends Component {
   static contextType = AuthContext;
@@ -15,6 +16,7 @@ class Events extends Component {
     this.state = {
       createEvent: false,
       events: [],
+      isLoading: false,
     }
     this.titleElRef = React.createRef();
     this.dateElRef = React.createRef();
@@ -114,6 +116,7 @@ class Events extends Component {
   }
 
   getEvents = async () => {
+    this.setState({isLoading: true})
     const requestBody = {
       query: `
         query {
@@ -139,6 +142,7 @@ class Events extends Component {
     this.setState({
       events: events.data.events
     })
+    this.setState({isLoading: false});
   }
 
   render() {
@@ -190,7 +194,10 @@ class Events extends Component {
             </button>
           </div>
         )}
-        <EventList events={this.state.events} authUserId={this.context.userId} />
+        {this.state.isLoading ?
+          <LoadingGif /> : (<EventList
+            events={this.state.events} authUserId={this.context.userId} />)
+        }
       </React.Fragment>
     )
   }

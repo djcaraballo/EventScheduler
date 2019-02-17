@@ -7,7 +7,7 @@ const EventItem = props => {
     <li key={props._id} className="event-item">
       <div>
         <h1>{props.title}</h1>
-        <h2>${props.price_quote}</h2>
+        <h2>${props.price_quote} -- {new Date(props.date).toLocaleDateString()}</h2>
       </div>
       <div>
         {props.userId === props.creatorId ?
