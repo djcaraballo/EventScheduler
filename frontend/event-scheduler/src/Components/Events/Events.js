@@ -62,15 +62,15 @@ class Events extends Component {
       return;
     }
 
-    const event =  {
-      title: eventTitle,
-      date: eventDate,
-      contact: eventContact,
-      location: eventLocation,
-      price_quote: eventPrice,
-      description: eventDescription
-    }
-    console.log(event)
+    // const event =  {
+    //   title: eventTitle,
+    //   date: eventDate,
+    //   contact: eventContact,
+    //   location: eventLocation,
+    //   price_quote: eventPrice,
+    //   description: eventDescription
+    // }
+    // console.log(event)
 
     const requestBody = {
       query: `
@@ -90,10 +90,6 @@ class Events extends Component {
             location
             price_quote
             description
-            creator {
-              _id
-              email
-            }
           }
         }
       `
@@ -102,7 +98,19 @@ class Events extends Component {
     const token = this.context.token;
     const confirmedEvent = await fetchData(requestBody, token);
     console.log(confirmedEvent)
-    this.getEvents()
+    this.setState(prevState => {
+      const updatedEvents = [...prevState.events];
+      updatedEvents.push({
+        _id: confirmedEvent.data.createEvent._id,
+        title: confirmedEvent.data.createEvent.title,
+        description: confirmedEvent.data.createEvent.description,
+        date: confirmedEvent.data.createEvent.date,
+        price_quote: confirmedEvent.data.createEvent.price_quote,
+        creator: {
+          _id: this.context.userId
+        }});
+        return {events: updatedEvents};
+    });
   }
 
   getEvents = async () => {
