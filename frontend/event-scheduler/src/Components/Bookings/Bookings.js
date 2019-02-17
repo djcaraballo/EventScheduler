@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AuthContext from '../../context/authContext';
 import LoadingGif from '../Loading/Loading';
 import { fetchData } from '../../API/api';
+import BookingsList from '../BookingsList/BookingsList';
 
 class Bookings extends Component {
   static contextType = AuthContext
@@ -44,15 +45,41 @@ class Bookings extends Component {
     this.setState({isLoading: false});
   }
 
+  handleCancelBooking = async bookingId => {
+    this.setState({isLoading: true})
+    const requestBody = {
+      query: `
+        mutation {
+          cancelBooking(bookingId: "${bookingId}") {
+            _id
+            title
+          }
+        }
+      `
+    }
+    const token = this.context.token
+    const bookings = await fetchData(requestBody, token);
+    this.setState(prevState => {
+      const updatedBookings = prevState.bookings.filter(booking => {
+        return booking._id !== bookingId
+      });
+      return {
+        bookings: updatedBookings,
+        isLoading: false,
+      };
+    })
+    this.setState({isLoading: false});
+  }
+
   render() {
     return(
       <React.Fragment>
       {this.state.isLoading ? (
         <LoadingGif />
       ) : (
-        <ul>
-        {this.state.bookings.map(booking => <li key={booking._id}>{booking.event.title} -- {new Date(booking.createdAt).toLocaleDateString()}</li>)}
-        </ul>
+        <BookingsList
+          bookings={this.state.bookings}
+          cancelBooking={this.handleCancelBooking} />
       )}
       </React.Fragment>
     )

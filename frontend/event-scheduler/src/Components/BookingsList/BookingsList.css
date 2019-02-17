@@ -1,0 +1,35 @@
+.bookings-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 40rem;
+  max-width: 90%;
+}
+
+.booking-item {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #923a6b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-item-actions button {
+  background: #923a6b;
+  font: inherit;
+  border: 1px solid #923a6b;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+}
+
+.booking-item-actions button:hover,
+.booking-item-actions button:active {
+  background: #ff9cdc;
+  border-color: #ff9cdc;
+  color: #3d3f88;
+}
