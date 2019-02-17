@@ -61,7 +61,7 @@ class Bookings extends Component {
     const bookings = await fetchData(requestBody, token);
     this.setState(prevState => {
       const updatedBookings = prevState.bookings.filter(booking => {
-        return booking._id !== bookingId
+        return booking._id !== bookingId;
       });
       return {
         bookings: updatedBookings,
