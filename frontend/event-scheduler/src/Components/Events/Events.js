@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import { fetchData } from '../../API/api';
 import AuthContext from '../../context/authContext';
+import EventList from '../EventList/EventList';
 
 class Events extends Component {
   static contextType = AuthContext;
@@ -133,10 +134,6 @@ class Events extends Component {
   }
 
   render() {
-    const eventList = this.state.events.map(event => {
-      return <li key={event._id} className="event-item">{event.title}</li>
-    })
-
     return(
       <React.Fragment>
         {this.state.createEvent && <ModalBackdrop />}
@@ -185,9 +182,7 @@ class Events extends Component {
             </button>
           </div>
         )}
-        <ul className="events-list">
-          {eventList}
-        </ul>
+        <EventList events={this.state.events} authUserId={this.context.userId} />
       </React.Fragment>
     )
   }
