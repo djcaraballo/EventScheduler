@@ -1,5 +1,5 @@
 .auth-form {
-  width: 40rem;
+  width: 30rem;
   max-width: 80%;
   margin: auto;
   font-family: 'Abel', sans-serif;
@@ -25,6 +25,8 @@
 .form-controls input {
   height: 1.5rem;
   border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Abel', sans-serif;
 }
 
 .form-buttons button {
