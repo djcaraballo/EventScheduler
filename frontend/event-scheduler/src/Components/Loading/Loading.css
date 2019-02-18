@@ -1,9 +1,9 @@
 .loading-spin {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .lds-circle {
@@ -11,13 +11,13 @@
   transform: translateZ(1px);
 }
 .lds-circle > div {
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  background: #531a31;
+  border-radius: 50%;
   display: inline-block;
-  width: 51px;
   height: 51px;
   margin: 6px;
-  border-radius: 50%;
-  background: #531a31;
-  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  width: 51px;
 }
 @keyframes lds-circle {
   0%, 100% {
