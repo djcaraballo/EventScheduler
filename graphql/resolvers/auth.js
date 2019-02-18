@@ -3,6 +3,13 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../../models/user');
 
+const createToken = async (user) => {
+  const token = await jwt.sign({userId: user.id, email: user.email}, 'thesupersecretsecuritykey', {
+    expiresIn: '1h'
+  });
+  return token;
+};
+
 module.exports = {
   createUser: async args => {
     try {
@@ -19,7 +26,8 @@ module.exports = {
       })
       const result = await user.save();
 
-      return { ...result._doc, password: null, _id: result.id };
+      const token = createToken(user)
+      return { ...result._doc, password: null, _id: result.id, token: token, tokenExpiration: 1};
     } catch (err) {
       throw err;
     }
@@ -33,9 +41,7 @@ module.exports = {
     if (!passwordIsEqual) {
       throw new Error('Password is incorrect');
     }
-    const token = await jwt.sign({userId: user.id, email: user.email}, 'thesupersecretsecuritykey', {
-      expiresIn: '1h'
-    });
+    const token = createToken(user);
     return {userId: user.id, token: token, tokenExpiration: 1};
   }
 };

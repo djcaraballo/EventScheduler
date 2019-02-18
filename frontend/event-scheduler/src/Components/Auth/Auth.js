@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import get from 'lodash/get'
 
 import './Auth.css';
 import { fetchData } from '../../API/api';
@@ -37,6 +38,8 @@ class Auth extends Component {
           createUser(userInput: {email: "${email}", password: "${password}"}) {
             _id
             email
+            token
+            tokenExpiration
           }
         }
         `
@@ -57,12 +60,19 @@ class Auth extends Component {
     }
 
     const userData = await fetchData(requestBody, null);
-
-    if (userData.data.login.token) {
+    console.log(userData)
+    
+    if (get(userData, "data.login.token")) {
       this.context.login(
         userData.data.login.token,
         userData.data.login.userId,
         userData.data.login.tokenExpiration
+      )
+    } else if(get(userData, "data.createUser.token")) {
+      this.context.login(
+        userData.data.createUser.token,
+        userData.data.createUser._id,
+        userData.data.createUser.tokenExpiration
       )
     }
     console.log(userData)
