@@ -238,7 +238,7 @@ class Events extends Component {
             userConfirm
             onCancel={this.handleCancelClick}
             onConfirm={this.handleBookEvent}
-            confirmText={this.context.token ? "Book Event" : "Confirm"}>
+            confirmText={this.context.token ? "RSVP" : "Confirm"}>
             <h1>{this.state.selectedEvent.title}</h1>
             <h2>${this.state.selectedEvent.price_quote} -- {new Date(this.state.date).toLocaleDateString()}</h2>
             <p>{this.state.selectedEvent.description}</p>

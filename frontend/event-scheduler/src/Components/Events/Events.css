@@ -1,7 +1,11 @@
 .events-form {
-  width: 40rem;
-  max-width: 80%;
-  margin: 5rem auto;
+  width: 75%;
+  margin: auto;
+  font-family: 'Abel', sans-serif;
+  color: #200e17;
+  font-weight: 800;
+  font-size: 1.25em;
+  padding: 0 3.5rem;
 }
 
 .events-form-controls label,
@@ -17,6 +21,13 @@
 
 .events-form-controls label {
   margin-bottom: 0.5rem;
+}
+
+.events-form-controls input {
+  height: 1.5rem;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Abel', sans-serif;
 }
 
 .events-controls {
