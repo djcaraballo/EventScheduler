@@ -34,34 +34,42 @@ class Auth extends Component {
     if (!this.state.isLogin) {
       requestBody = {
         query: `
-        mutation {
-          createUser(userInput: {email: "${email}", password: "${password}"}) {
-            _id
-            email
-            token
-            tokenExpiration
+          mutation CreateUser($email: String!, $password: String!) {
+            createUser(userInput: {email: $email, password: $password}) {
+              _id
+              email
+              token
+              tokenExpiration
+            }
           }
+        `,
+        variables: {
+          email: email,
+          password: password
         }
-        `
       };
     } else {
       requestBody = {
         query: `
-          query {
-            login(email: "${email}", password: "${password}") {
+          query Login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
               userId
               token
               tokenExpiration
             }
           }
-        `
+        `,
+        variables: {
+          email: email,
+          password: password
+        }
       }
 
     }
 
     const userData = await fetchData(requestBody, null);
     console.log(userData)
-    
+
     if (get(userData, "data.login.token")) {
       this.context.login(
         userData.data.login.token,
@@ -75,7 +83,6 @@ class Auth extends Component {
         userData.data.createUser.tokenExpiration
       )
     }
-    console.log(userData)
   }
 
   handleModeSwitch = () => {
