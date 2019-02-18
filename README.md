@@ -5,7 +5,7 @@ This project was created working with a custom built front-end UI and back-end d
 [djcaraballo (Dina Caraballo) · GitHub](https://github.com/djcaraballo)
 
 ## Desktop View
-![Application view]()
+![Events without login](https://github.com/djcaraballo/EventScheduler/blob/master/frontend/event-scheduler/src/assets/Screen%20Shot%202019-02-18%20at%202.40.51%20AM.png)
 
 ## Getting Started
 ```
