@@ -101,14 +101,16 @@ class Auth extends Component {
           <input
             type="email"
             name="email"
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            placeholder="Enter email address" />
         </div>
         <div className="form-controls">
           <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            placeholder="Enter password" />
         </div>
         <div className="form-buttons">
           <button

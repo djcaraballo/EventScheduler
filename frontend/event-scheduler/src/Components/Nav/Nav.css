@@ -5,9 +5,13 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 3.5rem;
-  background: #923a6b;
-  padding: 0 2rem;
+  height: 6rem;
+  background:
+    linear-gradient(
+      rgba(251, 248, 248, 0.87),
+      rgba(156, 155, 155, 0)
+    );
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,8 +20,10 @@
 
 .app-title h1{
   margin: 0;
-  font-size: 1.5rem;
-  color: #fff;
+  font-size: 3rem;
+  color: #200e17;
+  font-family: 'Satisfy', cursive;
+  font-style: italic;
 }
 
 .main-nav {
@@ -39,7 +45,7 @@
 .main-nav a,
 .main-nav button {
   text-decoration: none;
-  color: #fff;
+  color: #200e17;
   padding: 0.25rem 0.5rem;
   border: none;
   font: inherit;
@@ -47,19 +53,24 @@
   cursor: pointer;
   vertical-align: middle;
   margin: 0;
+  border-radius: 5px;
+  font-family: 'Abel', sans-serif;
+  font-weight: bolder;
+  font-size: 1.5em;
 }
 
 .main-nav a:hover,
 .main-nav button:hover {
-  background: #ff9cdc;
-  color: #3d3f88;
-  border-radius: 5px;
+  background: #944a61;
+  border-color: #944a61;
+  color: #200e17;
 }
+
 .main-nav a:active,
 .main-nav a.active,
 .main-nav button:active,
 .main-nav button.active {
-  background: #fff;
-  color: #040cf9;
-  border-radius: 5px;
+  background: #531a31;
+  color: #fff;
+  border-color: #531a31;
 }
