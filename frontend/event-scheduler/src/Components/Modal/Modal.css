@@ -19,7 +19,11 @@
   font-size: 3rem;
   font-family: 'Satisfy', cursive;
   font-style: italic;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+}
+
+.modal-header img {
+  height: 150px;
 }
 
 .modal-content {
@@ -58,7 +62,7 @@
 
 @media (min-width: 768px) {
   .modal {
-    width: 50rem;
-    left: calc((60% - 25rem) / 2);
+    width: 35rem;
+    left: calc((85% - 25rem) / 2);
   }
 }
