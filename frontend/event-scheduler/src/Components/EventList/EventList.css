@@ -1,6 +1,6 @@
 .event-list {
-  width: 100%;
-  margin: auto;
   list-style: none;
+  margin: auto;
   padding: 0;
+  width: 100%;
 }
