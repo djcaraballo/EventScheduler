@@ -21,8 +21,8 @@ font-family: 'Economica', sans-serif; */
   align-items: center;
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.55),
-      rgba(0, 0, 0, 0.50)
+      rgba(43, 40, 40, 0.9),
+      rgba(0, 0, 0, 0.5)
     ), url("./assets/mixer.jpg");
   background-size: cover;
   display: flex;

@@ -13,7 +13,7 @@ const BookingsList = props => {
               {new Date(booking.createdAt).toLocaleDateString()}
             </div>
             <div className="booking-item-actions">
-              <button onClick={() => props.cancelBooking(booking._id)}>Cancel Booking</button>
+              <button onClick={() => props.cancelBooking(booking._id)}>Cancel RSVP</button>
             </div>
           </li>
         )
