@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import get from 'lodash/get'
 
-import './Auth.css';
-import { fetchData } from '../../API/api';
 import AuthContext from '../../context/authContext';
+import { fetchData } from '../../API/api';
+import './Auth.css';
 
 class Auth extends Component {
   static contextType = AuthContext;
@@ -15,12 +15,12 @@ class Auth extends Component {
       password: '',
       isLogin: true,
     }
-  }
+  };
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
-  }
+  };
 
   handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,7 +29,7 @@ class Auth extends Component {
 
     if(email.trim().length === 0 || password.trim().length === 0) {
       return;
-    }
+    };
 
     if (!this.state.isLogin) {
       requestBody = {
@@ -47,7 +47,7 @@ class Auth extends Component {
           email: email,
           password: password
         }
-      };
+      }
     } else {
       requestBody = {
         query: `
@@ -65,10 +65,9 @@ class Auth extends Component {
         }
       }
 
-    }
+    };
 
     const userData = await fetchData(requestBody, null);
-    console.log(userData)
 
     if (get(userData, "data.login.token")) {
       this.context.login(
@@ -82,14 +81,14 @@ class Auth extends Component {
         userData.data.createUser._id,
         userData.data.createUser.tokenExpiration
       )
-    }
-  }
+    };
+  };
 
   handleModeSwitch = () => {
     this.setState(prevState => {
       return {isLogin: !prevState.isLogin}
-    })
-  }
+    });
+  };
 
   render() {
     return(
@@ -125,7 +124,7 @@ class Auth extends Component {
         </div>
       </form>
     )
-  }
-}
+  };
+};
 
-export default Auth
+export default Auth;
