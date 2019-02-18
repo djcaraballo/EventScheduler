@@ -1,28 +1,39 @@
 .event-item {
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding: 1rem;
-  border: 1px solid #923a6b;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Abel', sans-serif;
+  color: #200e17;
+  font-weight: 800;
+  font-size: 1.25em;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      rgba(251, 248, 248, 0.8),
+      rgba(212, 211, 211, 0.4)
+    );
 }
 
 .event-item h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #923a6b;
+  color: #531a31;
+  font-weight: bolder;
 }
 
 .event-item h2 {
   margin: 0;
   font-size: 1rem;
-  color: #7d7c7c;
+  color: #6d0223;
 }
 
 .event-btn {
-  background: #923a6b;
+  background: #531a31;
   font: inherit;
-  border: 1px solid #923a6b;
+  border: 1px solid #531a31;
   border-radius: 3px;
   padding: 0.25rem 1rem;
   margin-right: 1rem;
@@ -33,9 +44,9 @@
 
 .event-btn:hover,
 .event-btn:active {
-  background: #ff9cdc;
-  border-color: #ff9cdc;
-  color: #3d3f88;
+  background: #944a61;
+  border-color: #944a61;
+  color: #200e17;
 }
 
 .event-item p {

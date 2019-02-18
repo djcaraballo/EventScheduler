@@ -14,29 +14,18 @@ font-family: 'Economica', sans-serif; */
 
 .main-content {
   margin: 0 2.5rem;
-  border: 1px solid #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  background:
-    linear-gradient(
-      rgba(251, 248, 248, 0.55),
-      rgba(156, 155, 155, 0.38)
-    );
+  width: 80%;
 }
 
 .app-body {
+  align-items: center;
   background:
     linear-gradient(
       rgba(0, 0, 0, 0.55),
       rgba(0, 0, 0, 0.50)
     ), url("./assets/mixer.jpg");
   background-size: cover;
-  height: 100vh;
   display: flex;
-  align-items: center;
+  height: 100vh;
   justify-content: center;
-}
-
-.app-body::after {
-
 }

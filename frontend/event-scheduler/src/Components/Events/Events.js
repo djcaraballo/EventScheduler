@@ -246,7 +246,6 @@ class Events extends Component {
         )}
         {this.context.token && (
           <div className="events-controls">
-            <h1>Occasion!</h1>
             <p>Share your own events!</p>
             <button
               className="event-btn"
