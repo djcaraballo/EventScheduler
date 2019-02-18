@@ -6,20 +6,10 @@ const networking = require('../../assets/networking.jpg')
 const networking2 = require('../../assets/networking2.jpg')
 
 const Modal = props => {
-  const imgUrls = [
-    mixer,
-    mixer2,
-    networking,
-    networking2
-  ]
-  const srcUrl = imgUrls[Math.floor(Math.random() * Math.floor(4))]
-  console.log(srcUrl)
-
   return (
     <div className="modal">
       <header className="modal-header">
         <h1>{props.title}</h1>
-        <img src={srcUrl}  />
       </header>
       <section className="modal-content">
         {props.children}
