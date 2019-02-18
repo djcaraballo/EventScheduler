@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import get from 'lodash/get'
 
 import './Auth.css';
 import { fetchData } from '../../API/api';
@@ -33,39 +34,55 @@ class Auth extends Component {
     if (!this.state.isLogin) {
       requestBody = {
         query: `
-        mutation {
-          createUser(userInput: {email: "${email}", password: "${password}"}) {
-            _id
-            email
+          mutation CreateUser($email: String!, $password: String!) {
+            createUser(userInput: {email: $email, password: $password}) {
+              _id
+              email
+              token
+              tokenExpiration
+            }
           }
+        `,
+        variables: {
+          email: email,
+          password: password
         }
-        `
       };
     } else {
       requestBody = {
         query: `
-          query {
-            login(email: "${email}", password: "${password}") {
+          query Login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
               userId
               token
               tokenExpiration
             }
           }
-        `
+        `,
+        variables: {
+          email: email,
+          password: password
+        }
       }
 
     }
 
     const userData = await fetchData(requestBody, null);
+    console.log(userData)
 
-    if (userData.data.login.token) {
+    if (get(userData, "data.login.token")) {
       this.context.login(
         userData.data.login.token,
         userData.data.login.userId,
         userData.data.login.tokenExpiration
       )
+    } else if(get(userData, "data.createUser.token")) {
+      this.context.login(
+        userData.data.createUser.token,
+        userData.data.createUser._id,
+        userData.data.createUser.tokenExpiration
+      )
     }
-    console.log(userData)
   }
 
   handleModeSwitch = () => {

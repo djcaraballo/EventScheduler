@@ -69,25 +69,40 @@ class Events extends Component {
 
     const requestBody = {
       query: `
-        mutation {
-          createEvent(eventInput: {
-            title: "${eventTitle}",
-            date: "${eventDate}",
-            contact: "${eventContact}",
-            location: "${eventLocation}",
-            price_quote: ${eventPrice},
-            description: "${eventDescription}"
-          }) {
-            _id
-            title
-            date
-            contact
-            location
-            price_quote
-            description
-          }
+      mutation CreateEvent(
+        $title: String!,
+        $date: String!,
+        $contact: String!,
+        $location: String!,
+        $price: Float!,
+        $description: String!
+      ) {
+        createEvent(eventInput: {
+          title: $title,
+          date: $date,
+          contact: $contact,
+          location: $location,
+          price_quote: $price,
+          description: $description
+        }) {
+          _id
+          title
+          date
+          contact
+          location
+          price_quote
+          description
         }
-      `
+      }
+      `,
+      variables: {
+        title: eventTitle,
+        date: eventDate,
+        contact: eventContact,
+        location: eventLocation,
+        price: eventPrice,
+        description: eventDescription
+      }
     }
 
     const token = this.context.token;
@@ -104,8 +119,9 @@ class Events extends Component {
           _id: this.context.userId
         }});
         return {events: updatedEvents};
-    });
-  }
+      });
+      console.log(confirmedEvent)
+  };
 
   getEvents = async () => {
     this.setState({isLoading: true})
@@ -153,14 +169,17 @@ class Events extends Component {
     }
     const requestBody = {
       query: `
-        mutation {
-          bookEvent(eventId: "${this.state.selectedEvent._id}") {
+        mutation BookEvent($id: ID!) {
+          bookEvent(eventId: $id) {
             _id
             createdAt
             updatedAt
           }
         }
-      `
+      `,
+      variables: {
+        id: this.state.selectedEvent._id
+      }
     }
     const token = this.context.token;
     const confirmation = await fetchData(requestBody, token);
