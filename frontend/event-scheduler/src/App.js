@@ -15,7 +15,8 @@ class App extends Component {
       token: null,
       userId: null
     }
-  }
+  };
+
   login = (token, userId, tokenExpiration) => {
     this.setState({
       token,
@@ -32,7 +33,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div className="app-body">
           <AuthContext.Provider value={{
             token: token,
             userId: userId,

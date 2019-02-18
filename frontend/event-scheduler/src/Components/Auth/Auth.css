@@ -1,7 +1,11 @@
 .auth-form {
   width: 40rem;
   max-width: 80%;
-  margin: 5rem auto;
+  margin: auto;
+  font-family: 'Abel', sans-serif;
+  color: #200e17;
+  font-weight: 800;
+  font-size: 1.25em;
 }
 
 .form-controls label,
@@ -18,10 +22,15 @@
   margin-bottom: 0.5rem;
 }
 
+.form-controls input {
+  height: 1.5rem;
+  border-radius: 5px;
+}
+
 .form-buttons button {
-  background: #923a6b;
+  background: #531a31;
   font: inherit;
-  border: 1px solid #923a6b;
+  border: 1px solid #531a31;
   border-radius: 3px;
   padding: 0.25rem 1rem;
   margin-right: 1rem;
@@ -32,7 +41,7 @@
 
 .form-buttons button:hover,
 .form-buttons button:active {
-  background: #ff9cdc;
-  border-color: #ff9cdc;
-  color: #3d3f88;
+  background: #944a61;
+  border-color: #944a61;
+  color: #200e17;
 }
