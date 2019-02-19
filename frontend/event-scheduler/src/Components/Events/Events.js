@@ -159,10 +159,14 @@ class Events extends Component {
   };
 
   handleDisplayDetail = eventId => {
-    this.setState(prevState => {
-      const selectedEvent = prevState.events.find(event => event._id === eventId);
-      return { selectedEvent };
-    });
+      this.setState(prevState => {
+        if(prevState) {
+          const selectedEvent = prevState.events.find(event => event._id === eventId);
+          return { selectedEvent };
+        } else {
+          return { selectedEvent: null };
+        }
+      });
   };
 
   handleBookEvent = async () => {
@@ -187,7 +191,7 @@ class Events extends Component {
     }
 
     const token = this.context.token;
-    const confirmation = await fetchData(requestBody, token);
+    await fetchData(requestBody, token);
     this.setState({selectedEvent: null});
   };
 
