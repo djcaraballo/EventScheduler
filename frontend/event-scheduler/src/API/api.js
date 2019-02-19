@@ -7,7 +7,7 @@ export const fetchData = async (req, token) => {
         body: JSON.stringify(req),
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer' + " " + token
+          Authorization: `Bearer ${token}`
         }
       });
       const result = await response.json()
