@@ -1,4 +1,4 @@
-# Occasion!
+# Occasion
 This project was created working with a custom built front-end UI and back-end database. Users are able to view, create, and RSVP to local events.
 
 ## UI/UX Designer & Developer
