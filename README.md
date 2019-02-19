@@ -5,7 +5,7 @@ This project was created working with a custom built front-end UI and back-end d
 [djcaraballo (Dina Caraballo) · GitHub](https://github.com/djcaraballo)
 
 ## Application Exploration
-### Upon loading, users see login screen.
+### Upon loading, users see login screen, and have the option to create a new account.
 ![Login screen](https://github.com/djcaraballo/EventScheduler/blob/master/frontend/event-scheduler/src/assets/Screen%20Shot%202019-02-18%20at%202.42.29%20AM.png)
 
 ### Users are also able to view events before logging in.
@@ -28,8 +28,7 @@ npm start (in root folder)
 ```
 To start front-end server:
 ```
-cd frontend
-cd event-scheduler
+cd frontend/event-scheduler
 npm start
 ```
 
