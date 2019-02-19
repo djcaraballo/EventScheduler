@@ -35,7 +35,7 @@ const singleEvent = async eventId => {
   } catch (err) {
     throw err
   }
-}
+};
 
 const user = async userId => {
   try {
@@ -48,7 +48,7 @@ const user = async userId => {
   } catch (err) {
     throw err;
   }
-}
+};
 
 const formatEvent = event => {
   return {
@@ -68,7 +68,7 @@ const formatBooking = booking => {
     createdAt: dateToString(booking._doc.createdAt),
     updatedAt: dateToString(booking._doc.updatedAt),
   }
-}
+};
 
 exports.formatEvent = formatEvent;
 exports.formatBooking = formatBooking;
