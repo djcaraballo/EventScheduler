@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Modal.css'
 
 const Modal = props => {
   return (
-    <div className="modal">
+    <Fragment className="modal">
       <header className="modal-header">
         <h1>{props.title}</h1>
       </header>
@@ -22,7 +22,7 @@ const Modal = props => {
           </button>
         }
       </section>
-    </div>
+    </Fragment>
   )
 };
 

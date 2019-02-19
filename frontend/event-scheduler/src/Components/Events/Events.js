@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import AuthContext from '../../context/authContext';
 import EventList from '../EventList/EventList';
@@ -201,7 +201,7 @@ class Events extends Component {
 
   render() {
     return(
-      <React.Fragment>
+      <Fragment>
         {(this.state.createEvent || this.state.selectedEvent) && <ModalBackdrop />}
         {this.state.createEvent && (
           <Modal
@@ -272,7 +272,7 @@ class Events extends Component {
             />
           )
         }
-      </React.Fragment>
+      </Fragment>
     )
   };
 };

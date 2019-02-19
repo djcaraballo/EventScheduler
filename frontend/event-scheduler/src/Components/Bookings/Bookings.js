@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import AuthContext from '../../context/authContext';
 import LoadingGif from '../Loading/Loading';
@@ -76,7 +76,7 @@ class Bookings extends Component {
 
   render() {
     return(
-      <React.Fragment>
+      <Fragment>
       {this.state.isLoading ? (
         <LoadingGif />
       ) : (
@@ -84,7 +84,7 @@ class Bookings extends Component {
           bookings={this.state.bookings}
           cancelBooking={this.handleCancelBooking} />
       )}
-      </React.Fragment>
+      </Fragment>
     )
   };
 };
