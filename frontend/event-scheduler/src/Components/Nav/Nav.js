@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import './Nav.css';
 import AuthContext from '../../context/authContext'
+import { NavLink } from 'react-router-dom';
+import './Nav.css';
 
 const Nav = props => (
     <AuthContext.Consumer>
@@ -29,6 +29,6 @@ const Nav = props => (
       )
     }}
     </AuthContext.Consumer>
-)
+);
 
-export default Nav
+export default Nav;

@@ -1,25 +1,24 @@
 .modal {
-  width: 90%;
   background: #944a61;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  left: 5%;
   position: fixed;
   top: 8vh;
-  left: 5%;
+  width: 90%;
   z-index: 100;
 }
 
 .modal-header {
-  padding: 1rem;
   background: #944a61;
-  color: #fff
+  color: #fff;
+  padding: 1rem;
 }
 
 .modal-header h1 {
-  margin: 0;
-  font-size: 3rem;
   font-family: 'Satisfy', cursive;
+  font-size: 3rem;
   font-style: italic;
-  /* padding: 0 1rem; */
+  margin: 0;
 }
 
 .modal-content {
@@ -39,14 +38,14 @@
 
 .modal-btn {
   background: #531a31;
-  font: inherit;
   border: 1px solid #531a31;
   border-radius: 3px;
-  padding: 0.25rem 1rem;
-  margin-right: 1rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   color: #fff;
   cursor: pointer;
+  font: inherit;
+  margin-right: 1rem;
+  padding: 0.25rem 1rem;
 }
 
 .modal-btn:hover,
@@ -58,7 +57,7 @@
 
 @media (min-width: 768px) {
   .modal {
-    width: 35rem;
     left: calc((85% - 25rem) / 2);
+    width: 35rem;
   }
 }

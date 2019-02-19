@@ -1,24 +1,24 @@
 .auth-form {
-  width: 30rem;
-  max-width: 80%;
-  margin: auto;
-  font-family: 'Abel', sans-serif;
-  color: #200e17;
-  font-weight: 800;
-  font-size: 1.25em;
-  padding: 3.5rem;
-  border-radius: 10px;
   background:
-    linear-gradient(
-      rgba(251, 248, 248, 0.8),
-      rgba(212, 211, 211, 0.4)
+  linear-gradient(
+    rgba(251, 248, 248, 0.8),
+    rgba(212, 211, 211, 0.4)
     );
+  border-radius: 10px;
+  color: #200e17;
+  font-family: 'Abel', sans-serif;
+  font-size: 1.25em;
+  font-weight: 800;
+  margin: auto;
+  max-width: 80%;
+  padding: 3.5rem;
+  width: 30rem;
 }
 
 .form-controls label,
 .form-controls input {
-  width: 100%;
   display: block;
+  width: 100%;
 }
 
 .form-controls {
@@ -30,22 +30,22 @@
 }
 
 .form-controls input {
-  height: 1.5rem;
   border-radius: 5px;
-  font-size: 1em;
   font-family: 'Abel', sans-serif;
+  font-size: 1em;
+  height: 1.5rem;
 }
 
 .form-buttons button {
   background: #531a31;
-  font: inherit;
   border: 1px solid #531a31;
-  border-radius: 3px;
-  padding: 0.25rem 1rem;
-  margin-right: 1rem;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   color: #fff;
   cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  font: inherit;
+  margin-right: 1rem;
+  padding: 0.25rem 1rem;
 }
 
 .form-buttons button:hover,

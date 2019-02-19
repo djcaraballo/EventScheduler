@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import './Events.css';
-import Modal from '../Modal/Modal';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import { fetchData } from '../../API/api';
 import AuthContext from '../../context/authContext';
 import EventList from '../EventList/EventList';
 import LoadingGif from '../Loading/Loading';
+import Modal from '../Modal/Modal';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import { fetchData } from '../../API/api';
+import './Events.css';
 
 class Events extends Component {
   static contextType = AuthContext;
@@ -18,7 +18,8 @@ class Events extends Component {
       events: [],
       isLoading: false,
       selectedEvent: null,
-    }
+    };
+
     this.titleElRef = React.createRef();
     this.dateElRef = React.createRef();
     this.contactElRef = React.createRef();
@@ -26,7 +27,7 @@ class Events extends Component {
     this.priceElRef = React.createRef();
     this.descriptionElRef = React.createRef();
     this.isActive = true;
-  }
+  };
 
   componentDidMount() {
     this.getEvents();
@@ -49,6 +50,7 @@ class Events extends Component {
     this.setState({
       createEvent: false
     });
+
     const eventTitle = this.titleElRef.current.value;
     const eventDate = this.dateElRef.current.value;
     const eventContact = this.contactElRef.current.value;
@@ -65,35 +67,35 @@ class Events extends Component {
       eventDescription.trim().length === 0
     ) {
       return;
-    }
+    };
 
     const requestBody = {
       query: `
-      mutation CreateEvent(
-        $title: String!,
-        $date: String!,
-        $contact: String!,
-        $location: String!,
-        $price: Float!,
-        $description: String!
-      ) {
-        createEvent(eventInput: {
-          title: $title,
-          date: $date,
-          contact: $contact,
-          location: $location,
-          price_quote: $price,
-          description: $description
-        }) {
-          _id
-          title
-          date
-          contact
-          location
-          price_quote
-          description
+        mutation CreateEvent(
+          $title: String!,
+          $date: String!,
+          $contact: String!,
+          $location: String!,
+          $price: Float!,
+          $description: String!
+        ) {
+          createEvent(eventInput: {
+            title: $title,
+            date: $date,
+            contact: $contact,
+            location: $location,
+            price_quote: $price,
+            description: $description
+          }) {
+            _id
+            title
+            date
+            contact
+            location
+            price_quote
+            description
+          }
         }
-      }
       `,
       variables: {
         title: eventTitle,
@@ -103,12 +105,13 @@ class Events extends Component {
         price: eventPrice,
         description: eventDescription
       }
-    }
+    };
 
     const token = this.context.token;
     const confirmedEvent = await fetchData(requestBody, token);
     this.setState(prevState => {
       const updatedEvents = [...prevState.events];
+
       updatedEvents.push({
         _id: confirmedEvent.data.createEvent._id,
         title: confirmedEvent.data.createEvent.title,
@@ -119,8 +122,7 @@ class Events extends Component {
           _id: this.context.userId
         }});
         return {events: updatedEvents};
-      });
-      console.log(confirmedEvent)
+    });
   };
 
   getEvents = async () => {
@@ -143,15 +145,16 @@ class Events extends Component {
           }
         }
       `
-    }
+    };
 
     const events = await fetchData(requestBody, null);
+
     if (this.isActive) {
       this.setState({
         events: events.data.events,
         isLoading: false,
-      })
-    }
+      });
+    };
     this.setState({isLoading: false});
   };
 
@@ -159,14 +162,15 @@ class Events extends Component {
     this.setState(prevState => {
       const selectedEvent = prevState.events.find(event => event._id === eventId);
       return { selectedEvent };
-    })
+    });
   };
 
   handleBookEvent = async () => {
     if(!this.context.token) {
       this.setState({selectedEvent: null})
       return;
-    }
+    };
+
     const requestBody = {
       query: `
         mutation BookEvent($id: ID!) {
@@ -181,15 +185,15 @@ class Events extends Component {
         id: this.state.selectedEvent._id
       }
     }
+
     const token = this.context.token;
     const confirmation = await fetchData(requestBody, token);
-    console.log(confirmation)
-    this.setState({selectedEvent: null})
+    this.setState({selectedEvent: null});
   };
 
   componentWillUnmount() {
     this.isActive = false;
-  }
+  };
 
   render() {
     return(
@@ -266,7 +270,7 @@ class Events extends Component {
         }
       </React.Fragment>
     )
-  }
-}
+  };
+};
 
-export default Events
+export default Events;

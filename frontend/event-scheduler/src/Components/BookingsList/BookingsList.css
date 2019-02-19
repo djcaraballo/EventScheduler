@@ -6,33 +6,33 @@
 }
 
 .booking-item {
-  margin: 1rem auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-family: 'Abel', sans-serif;
-  color: #200e17;
-  font-weight: 800;
-  font-size: 1.25em;
-  border-radius: 10px;
   background:
     linear-gradient(
       rgba(251, 248, 248, 0.8),
       rgba(212, 211, 211, 0.4)
     );
+  border-radius: 10px;
+  color: #200e17;
+  display: flex;
+  font-family: 'Abel', sans-serif;
+  font-size: 1.25em;
+  font-weight: 800;
+  justify-content: space-between;
+  margin: 1rem auto;
+  padding: 1rem;
 }
 
 .booking-item-actions button {
   background: #531a31;
-  font: inherit;
   border: 1px solid #531a31;
   border-radius: 3px;
-  padding: 0.25rem 1rem;
-  margin-right: 1rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   color: #fff;
   cursor: pointer;
+  font: inherit;
+  margin-right: 1rem;
+  padding: 0.25rem 1rem;
 }
 
 .booking-item-actions button:hover,

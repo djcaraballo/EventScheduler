@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
-import './App.css';
 
 import Auth from './Components/Auth/Auth';
-import Events from './Components/Events/Events';
-import Bookings from './Components/Bookings/Bookings';
-import Nav from './Components/Nav/Nav';
 import AuthContext from './context/authContext';
+import Bookings from './Components/Bookings/Bookings';
+import Events from './Components/Events/Events';
+import Nav from './Components/Nav/Nav';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends Component {
     this.setState({
       token,
       userId
-    })
+    });
   };
 
   logout = () => {
@@ -54,7 +54,7 @@ class App extends Component {
         </div>
       </BrowserRouter>
     );
-  }
-}
+  };
+};
 
 export default App;

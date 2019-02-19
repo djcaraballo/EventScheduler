@@ -1,5 +1,6 @@
 import React from 'react';
 import './Modal.css'
+
 const mixer = require('../../assets/mixer.jpg')
 const mixer2 = require('../../assets/mixer2.jpg')
 const networking = require('../../assets/networking.jpg')

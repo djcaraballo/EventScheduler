@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import AuthContext from '../../context/authContext';
 import LoadingGif from '../Loading/Loading';
-import { fetchData } from '../../API/api';
 import BookingsList from '../BookingsList/BookingsList';
+import { fetchData } from '../../API/api';
 
 class Bookings extends Component {
-  static contextType = AuthContext
+  static contextType = AuthContext;
 
   constructor(props) {
     super(props)
@@ -14,7 +14,7 @@ class Bookings extends Component {
       isLoading: false,
       bookings: [],
     }
-  }
+  };
 
   componentDidMount() {
     this.getBookings();
@@ -36,17 +36,17 @@ class Bookings extends Component {
           }
         }
       `
-    }
-    const token = this.context.token
+    };
+    const token = this.context.token;
     const bookings = await fetchData(requestBody, token);
     this.setState({
-      bookings: bookings.data.bookings
-    })
-    this.setState({isLoading: false});
-  }
+      bookings: bookings.data.bookings,
+      isLoading: false
+    });
+  };
 
   handleCancelBooking = async bookingId => {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     const requestBody = {
       query: `
         mutation CancelBooking($id: ID!) {
@@ -59,8 +59,8 @@ class Bookings extends Component {
       variables: {
         id: bookingId
       }
-    }
-    const token = this.context.token
+    };
+    const token = this.context.token;
     const bookings = await fetchData(requestBody, token);
     this.setState(prevState => {
       const updatedBookings = prevState.bookings.filter(booking => {
@@ -70,9 +70,9 @@ class Bookings extends Component {
         bookings: updatedBookings,
         isLoading: false,
       };
-    })
+    });
     this.setState({isLoading: false});
-  }
+  };
 
   render() {
     return(
@@ -86,7 +86,7 @@ class Bookings extends Component {
       )}
       </React.Fragment>
     )
-  }
-}
+  };
+};
 
-export default Bookings
+export default Bookings;

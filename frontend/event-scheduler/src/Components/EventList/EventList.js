@@ -16,12 +16,13 @@ const EventList = props => {
         date={event.date}
         viewDetail={props.onViewDetail} />
     );
-  })
+  });
+
   return (
     <ul className="event-list">
       {events}
     </ul>
   )
-}
+};
 
 export default EventList;
