@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ModalBackdrop.css'
+import './ModalBackdrop.css';
 
 const ModalBackDrop = props => {
   return (
